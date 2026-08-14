@@ -1,26 +1,27 @@
-//Forma 1 - culculando milisgundos 
+const pedidos = [
+    { cliente: "Ana", valor: 150, pago: true },
+    { cliente: "Carlos", valor: 300, pago: false },
+    { cliente: "Maria", valor: 500, pago: true },
+    { cliente: "João", valor: 200, pago: true },
+    { cliente: "Luizinho", valor: 100, pago: true },
+    { cliente: "Mel", valor: 243, pago: true },
+    { cliente: "ND da VA", valor: 2400, pago: false },
+    { cliente: "Ana", valor: 5400, pago: false },
+    { cliente: "Lebron", valor: 54400, pago: true }
+]
 
-const dataNascimento = new Date("2025-05-15");
-const ativo = true;
+//Dado o array acima, mostre somente o pedidos pagos 
 
-// Transformando 18 anos em milissegundos
-const dezoitoAnosEmMilisegundos = 18 * 365.25 * 24 * 60 * 60 * 1000;
+for(let i = 0; i < pedidos.length; i++){
+    //verifacar se pedido é "pago" é true
+    if(pedidos[i].pago === true){
+        console.log(pedidos[i]);
+    }
+} 
 
-//comparando milissegundos com milissegundos!
-const podeAcessar = (new Date() - dataNascimento) >= 
-            dezoitoAnosEmMilisegundos && ativo;
-
-console.log(podeAcessar);
-
-
-//#region 2 Usando funções extras. 
-/*
-const dataNascimento = new Date("2025-02-29");
-const ativo = true;
-
-const hoje = new Date();
-const podeAcessar = dataNascimento <= new Date(hoje.getFullYear() - 18, hoje.getMonth(), hoje.getDate()) && ativo;
-
-console.log(podeAcessar);
-*/
-//#endregion
+// com for..of 
+for(let pedido of pedidos){
+    if(pedido.pago === true){
+        console.log(pedido);
+    }
+}
