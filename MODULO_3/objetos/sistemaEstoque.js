@@ -1,3 +1,6 @@
+//Para salvar o itens em um arquivo 
+const fs = require('fs');
+
 const estoque = [
     {
         id: 1,
@@ -168,6 +171,21 @@ function atualizarQuantidade(idBuscado, novaQuantidade) {
 
 
 // ==========================================
+// SALVAR OS DADOS EM UM ARQUIVO 
+// ==========================================
+function salvarNoArquivo() {
+    // 1. Converte a nossa lista (array) em um texto no formato JSON.
+    // O "null, 2" serve apenas para organizar o texto com quebras de linha 
+    // e espaços, 
+    // deixando o arquivo muito mais bonito e legível para humanos.
+    const textoParaSalvar = JSON.stringify(estoque, null, 2);
+    // 2. Escreve esse texto dentro de um arquivo chamado 'estoque.json'.
+    // writeFileSync cria o arquivo se não existir, ou substitui se já existir.
+    fs.writeFileSync('estoque.json', textoParaSalvar);
+    console.log("\n💾 Dados salvos no arquivo 'estoque.json' com sucesso!");
+}
+
+// ==========================================
 // TESTANDO O SISTEMA
 // ==========================================
 
@@ -196,3 +214,5 @@ atualizarQuantidade(2, 30);
 console.log("\n-----------------------------");
 
 listarEstoque();
+
+salvarNoArquivo();
